@@ -3,16 +3,16 @@ pipeline{
     stages {
         stage('Build') {
             steps {
-                env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
+                // env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
                 sh 'docker ps'
                 // sh 'docker stop dev_connect'
                 // sh 'docker rm dev_connect'
-                sh 'docker build --tag dev_connect:$env.GIT_COMMIT_MSG .'
+                sh 'docker build --tag dev_connect:1.4.0 .'
             }
         }
         stage('Run') {
             steps {
-                sh 'docker run -p 5000:5000 --name dev_connect -d -v dev_connect_data:/usr/src/app dev_connect:$env.GIT_COMMIT_MSG'
+                sh 'docker run -p 5000:5000 --name dev_connect -d -v dev_connect_data:/usr/src/app dev_connect:1.4.0'
             }
         }
         stage('Test') {
@@ -24,8 +24,8 @@ pipeline{
         stage('Push') {
             steps {
                 sh 'gcloud auth configure-docker us-west1-docker.pkg.dev'
-                sh 'docker tag dev_connect:$env.GIT_COMMIT_MSG us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$env.GIT_COMMIT_MSG'
-                sh 'docker push us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$env.GIT_COMMIT_MSG'
+                sh 'docker tag dev_connect:1.4.0 us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$env.1.4.0'
+                sh 'docker push us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$env.1.4.0'
             }
         }
     }
