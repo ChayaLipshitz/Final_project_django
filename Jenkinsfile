@@ -4,7 +4,7 @@ pipeline{
         stage('Build') {
             steps {
                 // def GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim() ${GIT_COMMIT_MSG}
-                def commitMessage  = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+                // def commitMessage  = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
                 sh 'docker ps'
                 sh 'docker stop dev_connect'
                 sh 'docker rm dev_connect'
