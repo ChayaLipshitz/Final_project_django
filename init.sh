@@ -3,7 +3,7 @@
 docker build --tag dev_connect .
 
 # create a volume: dev_connect_data
-# docker volume create dev_connect_data
+docker volume create dev_connect_data
 
 docker run -p 8000:8000 --name dev_connect -v dev_connect_data:/usr/src/app dev_connect
 
