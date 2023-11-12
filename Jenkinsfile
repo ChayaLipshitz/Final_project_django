@@ -3,6 +3,8 @@ pipeline{
     stages {
         stage('Build') {
             steps {
+                sh 'docker stop dev_connect'
+                sh 'docker rm dev_connect'
                 sh 'docker build --tag dev_connect:3.0.1 .'
             }
         }
