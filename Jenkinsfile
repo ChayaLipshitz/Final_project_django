@@ -24,7 +24,7 @@ pipeline{
         stage('Push') {
             steps {
                 sh 'gcloud auth configure-docker us-west1-docker.pkg.dev'
-                sh 'docker tag dev_connect:1.4.0 us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$env.1.4.0'
+                sh 'docker tag dev_connect:1.4.0 us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:1.4.0'
                 sh 'docker push us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$env.1.4.0'
             }
         }
