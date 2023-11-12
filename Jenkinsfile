@@ -17,7 +17,7 @@ pipeline{
         stage('Test') {
           steps {
             sh 'echo testing...'
-            sh 'docker exec  -it dev_connect python django_web_app/manage.py test'
+            sh 'docker exec dev_connect python django_web_app/manage.py test'
           }
         }
         stage('Push') {
