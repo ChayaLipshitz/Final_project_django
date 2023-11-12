@@ -10,7 +10,7 @@ stages {
     }
     stage('Run') {
         steps {
-            sh 'docker run -p 5000:5000 --name dev_connect -v dev_connect_data:/usr/src/app dev_connect:3.0.1'
+            sh 'docker run -p 5000:5000 --name dev_connect -d -v dev_connect_data:/usr/src/app dev_connect:3.0.1'
         }
     }
     stage('Login') {
