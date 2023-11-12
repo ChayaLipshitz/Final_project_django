@@ -11,17 +11,12 @@ pipeline{
                 sh 'docker run -p 5000:5000 --name dev_connect -d -v dev_connect_data:/usr/src/app dev_connect:3.0.1'
             }
         }
-        stage('Login') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
+        stage('Test') {
+          steps {
+            sh 'echo testing...'
+            sh 'docker exec  -it dev_connect python django_web_app/manage.py test'
+          }
         }
-        // stage('Test') {
-        //   steps {
-        //     sh 'touch test.sh'
-        //     sh 'docker run -p 8000:8000 --name dev_connect dev_connect:2.0.1 test > test.sh'
-        //   }
-        // }
         stage('Push') {
             steps {
                 sh 'gcloud auth configure-docker us-west1-docker.pkg.dev'
