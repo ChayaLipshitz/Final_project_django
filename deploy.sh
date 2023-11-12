@@ -36,8 +36,8 @@ read -p "Do you want to tagging and pushing this deploying? (Y/N) " TAGGING
 if [ "$TAGGING" = "Y" ]; then
     gcloud auth configure-docker us-west1-docker.pkg.dev 
     # tagging th image for push to artifact registry in google
-    docker tag dev_connect:$version us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$version
-    docker push us-west1-docker.pkg.dev/devconnect-final-project/chaya-lipshitz-artifacts/dev_connect:$version
+    docker tag dev_connect:$version us-west1-docker.pkg.dev/devconnect-project/chaya-lipshitz-artifacts/dev_connect:$version
+    docker push us-west1-docker.pkg.dev/devconnect-project/chaya-lipshitz-artifacts/dev_connect:$version
 fi
 
 # If something was feild
