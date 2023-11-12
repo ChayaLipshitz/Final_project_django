@@ -7,7 +7,7 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
 # Remove volume dev_connect_data
-docker volume remove dev_connect_data
+# docker volume remove dev_connect_data
 # docker volume prune 
 
 
