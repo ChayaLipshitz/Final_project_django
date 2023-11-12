@@ -5,8 +5,8 @@ pipeline{
             steps {
                 // env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
                 sh 'docker ps'
-                // sh 'docker stop dev_connect'
-                // sh 'docker rm dev_connect'
+                sh 'docker stop dev_connect'
+                sh 'docker rm dev_connect'
                 sh 'docker build --tag dev_connect:1.4.1 .'
             }
         }
